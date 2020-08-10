@@ -18,6 +18,8 @@
 #include <termios.h> // Contains POSIX terminal control definitions
 #include <unistd.h> // write(), read(), close()
 
+#define UART_PATH "/dev/"
+
 void configure_UART(char* ttyOx, struct termios *termios_p,speed_t baud_rate);
 
 void UART_send(char* ttyOx,unsigned char* msg,size_t size);

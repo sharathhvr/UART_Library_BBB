@@ -18,11 +18,13 @@
 #include <termios.h> // Contains POSIX terminal control definitions
 #include <unistd.h> // write(), read(), close()
 
+
+
 void configure_UART(char* ttyOx, struct termios *termios_p,speed_t baud_rate)
 {
 	char buf[50];
 
-	sprintf(buf,"/dev/%s",ttyOx);
+	sprintf(buf,UART_PATH"%s",ttyOx);
 	// Open the serial port. Change device path as needed (currently set to an standard FTDI USB-UART cable type device)
 	int serial_port = open(buf, O_RDWR);
 
@@ -42,7 +44,7 @@ void UART_send(char* ttyOx,unsigned char* msg,size_t size)
 {
 	char buf[50];
 
-	sprintf(buf,"/dev/%s",ttyOx);
+	sprintf(buf,UART_PATH"%s",ttyOx);
 	// Open the serial port. Change device path as needed (currently set to an standard FTDI USB-UART cable type device)
 	int serial_port = open(buf, O_RDWR);
 
@@ -59,7 +61,7 @@ int UART_Recieve(char* ttyOx,char* read_buf,size_t size)
 {
 	char buf[50];
 
-	sprintf(buf,"/dev/%s",ttyOx);
+	sprintf(buf,UART_PATH"%s",ttyOx);
 	// Open the serial port. Change device path as needed (currently set to an standard FTDI USB-UART cable type device)
 	int serial_port = open(buf, O_RDWR);
 
